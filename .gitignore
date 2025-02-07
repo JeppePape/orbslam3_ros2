@@ -1,0 +1,75 @@
+# General files
+*.log
+*.tmp
+*.swp
+*.DS_Store
+Thumbs.db
+
+# CMake and build-related files
+/build/
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.a
+*.lib
+*.out
+*.d
+*.dSYM/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# ROS and Colcon-related
+install/
+devel/
+build/
+log/
+.colcon/
+.colcon_workspaces
+ros_ws/build/
+ros_ws/devel/
+ros_ws/install/
+ros_ws/logs/
+
+# ROSBags (if you want to ignore bag files)
+*.bag
+*.bag.active
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.pytest_cache/
+
+# OpenCV-generated files
+opencv_temp/
+opencv_cache/
+
+# Pangolin
+pangolin_cache/
+*.pangolin.log
+
+# ORB-SLAM related
+ORBvoc.txt
+*.bin
+*.tmp
+ORB-SLAM-Output/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+*.code-workspace
+
+# System files
+*.~lock.*
+*.bak
+*.backup
+*.old
+*.orig
+*.~tmp
+
