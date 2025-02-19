@@ -17,12 +17,12 @@
 using ImageMsg = sensor_msgs::msg::Image;
 using ImuMsg = sensor_msgs::msg::Imu;
 
-class MonocularInertialNode : public rclcpp::Node
+class MonoInertialNode : public rclcpp::Node
 {
 public:
-    MonocularInertialNode(ORB_SLAM3::System* pSLAM);
+    MonoInertialNode(ORB_SLAM3::System* pSLAM);
 
-    ~MonocularInertialNode();
+    ~MonoInertialNode();
 
 private:
 
@@ -30,11 +30,16 @@ private:
 
     void GrabImage(const sensor_msgs::msg::Image::SharedPtr msg);
 
+    cv::Mat GetImage(const ImageMsg::SharedPtr msg);
+
     void SyncWithImu();
     
-    ORB_SLAM3::System* m_SLAM;
+    ORB_SLAM3::System *SLAM_;
+    std::thread *syncThread_;
 
     cv_bridge::CvImagePtr m_cvImPtr;
+
+    std::queue<ImageMsg::SharedPtr> imgBuf_;
 
     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_image_subscriber;
     rclcpp::Subscription<ImuMsg>::SharedPtr   subImu_;

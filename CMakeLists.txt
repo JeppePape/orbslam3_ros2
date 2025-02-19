@@ -64,7 +64,14 @@ add_executable(stereo-inertial
 target_link_libraries(stereo-inertial ${OpenCV_LIBS})
 ament_target_dependencies(stereo-inertial rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin)
 
-install(TARGETS mono rgbd stereo stereo-inertial
+add_executable(mono-inertial
+  src/mono-inertial/mono-inertial.cpp
+  src/mono-inertial/mono-inertial-node.cpp
+)
+target_link_libraries(mono-inertial ${OpenCV_LIBS})
+ament_target_dependencies(mono-inertial rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin)
+
+install(TARGETS mono rgbd stereo stereo-inertial mono-inertial
   DESTINATION lib/${PROJECT_NAME})
 
 # Install launch files.

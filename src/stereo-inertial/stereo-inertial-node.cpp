@@ -4,7 +4,7 @@
 
 using std::placeholders::_1;
 
-StereoInertialNode::StereoInertialNode(ORB_SLAM3::System *SLAM, const string &strSettingsFile, const string &strDoRectify, const string &strDoEqual) :
+StereoInertialNode::StereoInertialNode(ORB_SLAM3::System *SLAMS, const string &strSettingsFile, const string &strDoRectify, const string &strDoEqual) :
     Node("ORB_SLAM3_ROS2"),
     SLAM_(SLAM)
 {
