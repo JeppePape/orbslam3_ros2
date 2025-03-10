@@ -6,7 +6,7 @@ using std::placeholders::_1;
 
 StereoInertialNode::StereoInertialNode(ORB_SLAM3::System *SLAMS, const string &strSettingsFile, const string &strDoRectify, const string &strDoEqual) :
     Node("ORB_SLAM3_ROS2"),
-    SLAM_(SLAM)
+    SLAM_(SLAMS)
 {
     stringstream ss_rec(strDoRectify);
     ss_rec >> boolalpha >> doRectify_;

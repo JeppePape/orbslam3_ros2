@@ -27,25 +27,24 @@ public:
 private:
 
     void GrabImu(const ImuMsg::SharedPtr msg);
-
     void GrabImage(const sensor_msgs::msg::Image::SharedPtr msg);
-
     cv::Mat GetImage(const ImageMsg::SharedPtr msg);
-
     void SyncWithImu();
-    
+
     ORB_SLAM3::System *SLAM_;
     std::thread *syncThread_;
 
     cv_bridge::CvImagePtr m_cvImPtr;
 
+    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_image_subscriber;
+    rclcpp::Subscription<ImuMsg>::SharedPtr subImu_;
+
+    std::queue<ImuMsg::SharedPtr> imuBuf_;
     std::queue<ImageMsg::SharedPtr> imgBuf_;
 
-    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr m_image_subscriber;
-    rclcpp::Subscription<ImuMsg>::SharedPtr   subImu_;
-
-    queue<ImuMsg::SharedPtr> imuBuf_;
     std::mutex bufMutex_;
+
+
 };
 
 #endif
